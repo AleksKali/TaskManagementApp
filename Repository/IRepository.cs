@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace Repository
 {
-    public class Class1
+    public interface IRepository<T> where T : class
     {
+        List<T> GetAll();
+        void Save(T obj);
+        void Update(T obj);
+        void Delete(T obj);
+        List<T> Search(string criteria);
     }
 }
