@@ -7,14 +7,45 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UserInterface.UserControls.Employee;
 
 namespace UserInterface
 {
-    public partial class Form1 : Form
+    public partial class FrmMain : Form
     {
-        public Form1()
+        public FrmMain()
         {
             InitializeComponent();
+        }
+
+
+
+        public void ChangePanel(UserControl userControl)
+        {
+            pnlMain.Controls.Clear();
+            userControl.Dock = DockStyle.Fill;
+            pnlMain.Controls.Add(userControl);
+        }
+
+        private void createEmployeeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangePanel(new UCAddEmployee());
+        }
+
+        private void searchEmpoyeesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangePanel(new UCSearchEmployees());
+
+        }
+
+        private void createTaskToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void searchTasksToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
