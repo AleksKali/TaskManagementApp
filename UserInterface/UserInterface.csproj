@@ -52,6 +52,12 @@
     <Compile Include="Dialogs\EmployeeDetailDialog.Designer.cs">
       <DependentUpon>EmployeeDetailDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\TaskDetailDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\TaskDetailDialog.Designer.cs">
+      <DependentUpon>TaskDetailDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,8 +78,23 @@
     <Compile Include="UserControls\Employee\UCSearchEmployees.Designer.cs">
       <DependentUpon>UCSearchEmployees.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Task\UCAddTask.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Task\UCAddTask.Designer.cs">
+      <DependentUpon>UCAddTask.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Task\UCSearchTasks.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Task\UCSearchTasks.Designer.cs">
+      <DependentUpon>UCSearchTasks.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Dialogs\EmployeeDetailDialog.resx">
       <DependentUpon>EmployeeDetailDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\TaskDetailDialog.resx">
+      <DependentUpon>TaskDetailDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
@@ -93,6 +114,12 @@
     <EmbeddedResource Include="UserControls\Employee\UCSearchEmployees.resx">
       <DependentUpon>UCSearchEmployees.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Task\UCAddTask.resx">
+      <DependentUpon>UCAddTask.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Task\UCSearchTasks.resx">
+      <DependentUpon>UCSearchTasks.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -106,9 +133,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="UserControls\Task\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\ApplicationLogic\ApplicationLogic.csproj">
       <Project>{A9CD029E-650C-42BD-AFC5-26480D783F88}</Project>

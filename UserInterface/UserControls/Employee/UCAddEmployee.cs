@@ -18,6 +18,8 @@ namespace UserInterface.UserControls.Employee
             InitializeComponent();
         }
 
+       
+
         private void btnAddEmployee_Click(object sender, EventArgs e)
         {
             if (!(Controller.Instance.ValidateEmployeeData(tbFullName, tbEmail, tbPhone, tbSalary)))

@@ -20,3 +20,6 @@ C:\Users\SashkaBreBre\source\repos\TaskManagement\UserInterface\bin\Debug\Databa
 C:\Users\SashkaBreBre\source\repos\TaskManagement\UserInterface\obj\Debug\UserInterface.csproj.CopyComplete
 C:\Users\SashkaBreBre\source\repos\TaskManagement\UserInterface\obj\Debug\UserInterface.UserControls.Employee.UCSearchEmployees.resources
 C:\Users\SashkaBreBre\source\repos\TaskManagement\UserInterface\obj\Debug\UserInterface.Dialogs.EmployeeDetailDialog.resources
+C:\Users\SashkaBreBre\source\repos\TaskManagement\UserInterface\obj\Debug\UserInterface.UserControls.Task.UCAddTask.resources
+C:\Users\SashkaBreBre\source\repos\TaskManagement\UserInterface\obj\Debug\UserInterface.UserControls.Task.UCSearchTasks.resources
+C:\Users\SashkaBreBre\source\repos\TaskManagement\UserInterface\obj\Debug\UserInterface.Dialogs.TaskDetailDialog.resources

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UserInterface.UserControls.Employee;
+using UserInterface.UserControls.Task;
 
 namespace UserInterface
 {
@@ -40,12 +41,12 @@ namespace UserInterface
 
         private void createTaskToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            ChangePanel(new UCAddTask());
         }
 
         private void searchTasksToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            ChangePanel(new UCSearchTasks());
         }
     }
 }
