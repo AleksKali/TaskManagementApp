@@ -10,6 +10,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Task = Domain.Task;
+using TaskStatus = Domain.TaskStatus;
 
 namespace ApplicationLogic
 {
@@ -22,6 +24,7 @@ namespace ApplicationLogic
         {
         }
 
+
         public static Controller Instance
         {
             get
@@ -33,13 +36,126 @@ namespace ApplicationLogic
                 return instance;
             }
         }
+
         #endregion
 
         private Employee selectedEmployee = new Employee();
         private List<Employee> employees = new List<Employee>();
         private EmployeeRepository employeeRepository = new EmployeeRepository();
+        private TaskRepository taskRepository = new TaskRepository();
+        private ProjectRepository projectRepository = new ProjectRepository();
+        private List<Task> tasks = new List<Task>();
+        private Task selectedTask = new Task();
 
 
+        public void LoadTaskData(ComboBox cbAssignee, ComboBox cbProject)
+        {
+            cbAssignee.DataSource = employeeRepository.GetAll();
+            cbProject.DataSource = projectRepository.GetAll();
+        }
+
+        public void ShowTaskDetails(TextBox tbTaskId, TextBox tbTitle, RichTextBox rtbDescription, ComboBox cbAssignee, ComboBox cbProject, DateTimePicker dtpDueDate, ComboBox cbStatus)
+        {
+            tbTaskId.Text = selectedTask.TaskId.ToString();
+            tbTitle.Text = selectedTask.Title;
+            rtbDescription.Text = selectedTask.Description;
+            LoadTaskData(cbAssignee, cbProject);
+            cbAssignee.SelectedItem = selectedTask.Assignee;
+            cbProject.SelectedItem = selectedTask.Project;
+            dtpDueDate.Value = selectedTask.DueDate;
+            cbStatus.DataSource = Enum.GetValues(typeof(TaskStatus));
+            cbStatus.SelectedItem = selectedTask.Status;
+
+            cbProject.Enabled = false;
+            tbTaskId.ReadOnly = true;
+        }
+
+
+        public bool ShowTaskDetailDialog(DataGridView dgvSearchTasks)
+        {
+            if (dgvSearchTasks.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Please choose a row.");
+                return false;
+            }
+            selectedTask = (Task)dgvSearchTasks.SelectedRows[0].DataBoundItem;
+
+            return true;
+        }
+        public void AddTask(TextBox tbTitle, RichTextBox rtbDescription, ComboBox cbProject, ComboBox cbAssignee, DateTimePicker dtpDueDate)
+        {
+            
+            try
+            {
+                Task task = new Task
+                {
+                    Title = tbTitle.Text,
+                    Description = rtbDescription.Text,
+                    Assignee = (Employee)cbAssignee.SelectedItem,
+                    Project = (Project)cbProject.SelectedItem,
+                    DueDate = dtpDueDate.Value,
+                    Status = TaskStatus.Ready
+                };
+
+                taskRepository.Save(task);
+                MessageBox.Show("Task successfully created!");
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Failed to save data." + ex.Message);
+            }
+            
+
+        }
+
+        public void SearchTasks(DataGridView dgvSearchTasks, TextBox tbTaskTitle)
+        {
+            try
+            {
+                tasks = taskRepository.Search(tbTaskTitle.Text);
+
+                dgvSearchTasks.DataSource = tasks;
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Failed to load tasks.");
+            }
+        }
+        public void SetTaskDataGridView(DataGridView dgv) 
+        {
+            dgv.DataSource = taskRepository.GetAll(); //napravi genericku fju za ovo osvezavanje, tipa sa IRepository
+            dgv.ReadOnly = true;
+        }
+
+
+        public void UpdateTask(TextBox tbTaskId, ComboBox cbProject, TextBox tbTitle, RichTextBox rtbDescription, ComboBox cbAssignee, ComboBox cbStatus, DateTimePicker dtpDueDate)
+        {
+
+            selectedTask.TaskId = int.Parse(tbTaskId.Text);
+            selectedTask.Assignee = (Employee)cbAssignee.SelectedItem;
+            selectedTask.Project = (Project)cbProject.SelectedItem;
+            selectedTask.Title = tbTitle.Text;
+            selectedTask.Description = rtbDescription.Text;
+            selectedTask.DueDate = dtpDueDate.Value;
+            selectedTask.Status = (TaskStatus)cbStatus.SelectedItem;
+
+
+            try
+            {
+                taskRepository.Update(selectedTask);
+                MessageBox.Show("Task successfully updated!");
+                DialogResult result = DialogResult.OK;
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Update failed.");
+            }
+        }
         public void AddEmployee(TextBox fullName, TextBox email, TextBox phone, DateTimePicker dtpDateOfBirth, TextBox salary)
         {
             //vidi sta ces kad su prazna polja
