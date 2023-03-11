@@ -11,5 +11,10 @@ namespace Domain
         public int ProjectId { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
+
+        public override string ToString()
+        {
+            return Title;
+        }
     }
 }
