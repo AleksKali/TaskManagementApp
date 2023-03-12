@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ApplicationLogic;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UserInterface.UserControls.Employee;
+using UserInterface.UserControls.Project;
 using UserInterface.UserControls.Task;
 
 namespace UserInterface
@@ -17,11 +19,12 @@ namespace UserInterface
         public FrmMain()
         {
             InitializeComponent();
+            ChangePanel(new UCEmployeeStats());
         }
 
+       
 
-
-        public void ChangePanel(UserControl userControl)
+        public void ChangePanel(UserControl userControl) //da li premestiti u controller-a?
         {
             pnlMain.Controls.Clear();
             userControl.Dock = DockStyle.Fill;
@@ -44,9 +47,25 @@ namespace UserInterface
             ChangePanel(new UCAddTask());
         }
 
-        private void searchTasksToolStripMenuItem_Click(object sender, EventArgs e)
+        private void searchTasksToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             ChangePanel(new UCSearchTasks());
+
+        }
+
+        private void projectStatusToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangePanel(new UCProjectStatus());
+        }
+
+        private void projectSizeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangePanel(new UCProjectSize());
+        }
+
+        private void employeeStatisticsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangePanel(new UCEmployeeStats());
         }
     }
 }

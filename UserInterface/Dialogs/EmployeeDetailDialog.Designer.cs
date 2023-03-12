@@ -172,6 +172,7 @@ namespace UserInterface.Dialogs
             this.Controls.Add(this.tbId);
             this.Controls.Add(this.label1);
             this.Name = "EmployeeDetailDialog";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "EmployeeDetailDialog";
             this.Load += new System.EventHandler(this.EmployeeDetailDialog_Load);
             this.ResumeLayout(false);

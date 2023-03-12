@@ -45,7 +45,7 @@ namespace UserInterface.UserControls.Employee
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(77, 86);
+            this.label1.Location = new System.Drawing.Point(288, 107);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(73, 17);
             this.label1.TabIndex = 0;
@@ -53,14 +53,14 @@ namespace UserInterface.UserControls.Employee
             // 
             // tbFullName
             // 
-            this.tbFullName.Location = new System.Drawing.Point(177, 80);
+            this.tbFullName.Location = new System.Drawing.Point(388, 101);
             this.tbFullName.Name = "tbFullName";
             this.tbFullName.Size = new System.Drawing.Size(189, 22);
             this.tbFullName.TabIndex = 1;
             // 
             // tbEmail
             // 
-            this.tbEmail.Location = new System.Drawing.Point(177, 123);
+            this.tbEmail.Location = new System.Drawing.Point(388, 144);
             this.tbEmail.Name = "tbEmail";
             this.tbEmail.Size = new System.Drawing.Size(189, 22);
             this.tbEmail.TabIndex = 3;
@@ -68,7 +68,7 @@ namespace UserInterface.UserControls.Employee
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(77, 129);
+            this.label2.Location = new System.Drawing.Point(288, 150);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(46, 17);
             this.label2.TabIndex = 2;
@@ -76,7 +76,7 @@ namespace UserInterface.UserControls.Employee
             // 
             // tbPhone
             // 
-            this.tbPhone.Location = new System.Drawing.Point(177, 168);
+            this.tbPhone.Location = new System.Drawing.Point(388, 189);
             this.tbPhone.Name = "tbPhone";
             this.tbPhone.Size = new System.Drawing.Size(189, 22);
             this.tbPhone.TabIndex = 5;
@@ -84,7 +84,7 @@ namespace UserInterface.UserControls.Employee
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(77, 168);
+            this.label3.Location = new System.Drawing.Point(288, 189);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 17);
             this.label3.TabIndex = 4;
@@ -93,7 +93,7 @@ namespace UserInterface.UserControls.Employee
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(77, 216);
+            this.label4.Location = new System.Drawing.Point(288, 237);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(90, 17);
             this.label4.TabIndex = 6;
@@ -101,7 +101,7 @@ namespace UserInterface.UserControls.Employee
             // 
             // tbSalary
             // 
-            this.tbSalary.Location = new System.Drawing.Point(177, 256);
+            this.tbSalary.Location = new System.Drawing.Point(388, 277);
             this.tbSalary.Name = "tbSalary";
             this.tbSalary.Size = new System.Drawing.Size(189, 22);
             this.tbSalary.TabIndex = 9;
@@ -109,7 +109,7 @@ namespace UserInterface.UserControls.Employee
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(77, 261);
+            this.label5.Location = new System.Drawing.Point(288, 282);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(52, 17);
             this.label5.TabIndex = 8;
@@ -117,7 +117,7 @@ namespace UserInterface.UserControls.Employee
             // 
             // dtpDateOfBirth
             // 
-            this.dtpDateOfBirth.Location = new System.Drawing.Point(177, 216);
+            this.dtpDateOfBirth.Location = new System.Drawing.Point(388, 237);
             this.dtpDateOfBirth.MaxDate = new System.DateTime(2005, 12, 31, 0, 0, 0, 0);
             this.dtpDateOfBirth.MinDate = new System.DateTime(1953, 12, 31, 0, 0, 0, 0);
             this.dtpDateOfBirth.Name = "dtpDateOfBirth";
@@ -127,7 +127,7 @@ namespace UserInterface.UserControls.Employee
             // 
             // btnAddEmployee
             // 
-            this.btnAddEmployee.Location = new System.Drawing.Point(177, 341);
+            this.btnAddEmployee.Location = new System.Drawing.Point(388, 362);
             this.btnAddEmployee.Name = "btnAddEmployee";
             this.btnAddEmployee.Size = new System.Drawing.Size(189, 35);
             this.btnAddEmployee.TabIndex = 11;
@@ -151,7 +151,7 @@ namespace UserInterface.UserControls.Employee
             this.Controls.Add(this.tbFullName);
             this.Controls.Add(this.label1);
             this.Name = "UCAddEmployee";
-            this.Size = new System.Drawing.Size(487, 472);
+            this.Size = new System.Drawing.Size(891, 504);
             this.ResumeLayout(false);
             this.PerformLayout();
 

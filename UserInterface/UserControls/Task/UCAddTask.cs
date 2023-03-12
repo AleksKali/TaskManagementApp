@@ -28,7 +28,16 @@ namespace UserInterface.UserControls.Task
 
         private void btnSaveTask_Click(object sender, EventArgs e)
         {
-            Controller.Instance.AddTask(tbTitle, rtbDescription, cbProject, cbAssignee, dtpDueDate);
+            if (!(Controller.Instance.ValidateTaskData(tbTitle, rtbDescription)))
+            {
+                return;
+            }
+            else
+            {
+                Controller.Instance.AddTask(tbTitle, rtbDescription, cbProject, cbAssignee, dtpDueDate);
+                Controller.Instance.RefreshFields(tbTitle, rtbDescription);
+            }
+            
         }
     }
 }

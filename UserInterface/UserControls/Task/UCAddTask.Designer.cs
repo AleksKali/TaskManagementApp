@@ -45,7 +45,7 @@ namespace UserInterface.UserControls.Task
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(83, 29);
+            this.label1.Location = new System.Drawing.Point(201, 87);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(39, 17);
             this.label1.TabIndex = 0;
@@ -54,7 +54,7 @@ namespace UserInterface.UserControls.Task
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(83, 75);
+            this.label2.Location = new System.Drawing.Point(201, 133);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(83, 17);
             this.label2.TabIndex = 1;
@@ -63,7 +63,7 @@ namespace UserInterface.UserControls.Task
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(83, 220);
+            this.label3.Location = new System.Drawing.Point(201, 278);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(56, 17);
             this.label3.TabIndex = 2;
@@ -72,7 +72,7 @@ namespace UserInterface.UserControls.Task
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(83, 264);
+            this.label4.Location = new System.Drawing.Point(201, 322);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(70, 17);
             this.label4.TabIndex = 3;
@@ -81,7 +81,7 @@ namespace UserInterface.UserControls.Task
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(83, 312);
+            this.label5.Location = new System.Drawing.Point(201, 370);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(70, 17);
             this.label5.TabIndex = 4;
@@ -89,7 +89,7 @@ namespace UserInterface.UserControls.Task
             // 
             // tbTitle
             // 
-            this.tbTitle.Location = new System.Drawing.Point(177, 29);
+            this.tbTitle.Location = new System.Drawing.Point(295, 87);
             this.tbTitle.Name = "tbTitle";
             this.tbTitle.Size = new System.Drawing.Size(472, 22);
             this.tbTitle.TabIndex = 7;
@@ -97,7 +97,7 @@ namespace UserInterface.UserControls.Task
             // cbProject
             // 
             this.cbProject.FormattingEnabled = true;
-            this.cbProject.Location = new System.Drawing.Point(177, 213);
+            this.cbProject.Location = new System.Drawing.Point(295, 271);
             this.cbProject.Name = "cbProject";
             this.cbProject.Size = new System.Drawing.Size(472, 24);
             this.cbProject.TabIndex = 9;
@@ -105,14 +105,14 @@ namespace UserInterface.UserControls.Task
             // cbAssignee
             // 
             this.cbAssignee.FormattingEnabled = true;
-            this.cbAssignee.Location = new System.Drawing.Point(177, 257);
+            this.cbAssignee.Location = new System.Drawing.Point(295, 315);
             this.cbAssignee.Name = "cbAssignee";
             this.cbAssignee.Size = new System.Drawing.Size(472, 24);
             this.cbAssignee.TabIndex = 10;
             // 
             // dtpDueDate
             // 
-            this.dtpDueDate.Location = new System.Drawing.Point(177, 307);
+            this.dtpDueDate.Location = new System.Drawing.Point(295, 365);
             this.dtpDueDate.MinDate = new System.DateTime(2023, 3, 10, 0, 0, 0, 0);
             this.dtpDueDate.Name = "dtpDueDate";
             this.dtpDueDate.Size = new System.Drawing.Size(472, 22);
@@ -120,7 +120,7 @@ namespace UserInterface.UserControls.Task
             // 
             // btnSaveTask
             // 
-            this.btnSaveTask.Location = new System.Drawing.Point(330, 373);
+            this.btnSaveTask.Location = new System.Drawing.Point(448, 431);
             this.btnSaveTask.Name = "btnSaveTask";
             this.btnSaveTask.Size = new System.Drawing.Size(114, 35);
             this.btnSaveTask.TabIndex = 13;
@@ -130,7 +130,7 @@ namespace UserInterface.UserControls.Task
             // 
             // rtbDescription
             // 
-            this.rtbDescription.Location = new System.Drawing.Point(177, 72);
+            this.rtbDescription.Location = new System.Drawing.Point(295, 130);
             this.rtbDescription.Name = "rtbDescription";
             this.rtbDescription.Size = new System.Drawing.Size(472, 120);
             this.rtbDescription.TabIndex = 14;
@@ -152,7 +152,7 @@ namespace UserInterface.UserControls.Task
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "UCAddTask";
-            this.Size = new System.Drawing.Size(801, 456);
+            this.Size = new System.Drawing.Size(1019, 533);
             this.ResumeLayout(false);
             this.PerformLayout();
 

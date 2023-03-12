@@ -29,8 +29,11 @@ namespace UserInterface.UserControls.Employee
             else
             {
                 Controller.Instance.AddEmployee(tbFullName, tbEmail, tbPhone, dtpDateOfBirth, tbSalary);
+                Controller.Instance.RefreshEFields(tbFullName, tbEmail, tbPhone, tbSalary);
             }
            
         }
+
+       
     }
 }

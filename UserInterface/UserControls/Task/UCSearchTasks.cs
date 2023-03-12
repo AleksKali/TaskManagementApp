@@ -42,10 +42,10 @@ namespace UserInterface.UserControls.Task
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            /*
-              Controller.Instance.DeleteEmployee(dgvSearchEmployees);
-            Controller.Instance.SetEmployeeDataGridView(dgvSearchEmployees);
-             */
+            
+            Controller.Instance.DeleteTask(dgvSearchTasks);
+            Controller.Instance.SetTaskDataGridView(dgvSearchTasks);
+             
         }
 
         private void tbTaskTitle_TextChanged(object sender, EventArgs e)

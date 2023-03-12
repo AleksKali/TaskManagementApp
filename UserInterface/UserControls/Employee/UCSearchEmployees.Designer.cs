@@ -40,7 +40,7 @@ namespace UserInterface.UserControls.Employee
             // btnDeleteEmployee
             // 
             this.btnDeleteEmployee.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnDeleteEmployee.Location = new System.Drawing.Point(666, 178);
+            this.btnDeleteEmployee.Location = new System.Drawing.Point(824, 171);
             this.btnDeleteEmployee.Name = "btnDeleteEmployee";
             this.btnDeleteEmployee.Size = new System.Drawing.Size(108, 27);
             this.btnDeleteEmployee.TabIndex = 19;
@@ -51,7 +51,7 @@ namespace UserInterface.UserControls.Employee
             // btnDetails
             // 
             this.btnDetails.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnDetails.Location = new System.Drawing.Point(666, 128);
+            this.btnDetails.Location = new System.Drawing.Point(824, 121);
             this.btnDetails.Name = "btnDetails";
             this.btnDetails.Size = new System.Drawing.Size(108, 28);
             this.btnDetails.TabIndex = 18;
@@ -63,17 +63,17 @@ namespace UserInterface.UserControls.Employee
             // 
             this.dgvSearchEmployees.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dgvSearchEmployees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSearchEmployees.Location = new System.Drawing.Point(29, 102);
+            this.dgvSearchEmployees.Location = new System.Drawing.Point(63, 94);
             this.dgvSearchEmployees.Name = "dgvSearchEmployees";
             this.dgvSearchEmployees.RowHeadersWidth = 51;
             this.dgvSearchEmployees.RowTemplate.Height = 24;
-            this.dgvSearchEmployees.Size = new System.Drawing.Size(615, 365);
+            this.dgvSearchEmployees.Size = new System.Drawing.Size(735, 430);
             this.dgvSearchEmployees.TabIndex = 17;
             // 
             // tbEmployeeName
             // 
             this.tbEmployeeName.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tbEmployeeName.Location = new System.Drawing.Point(151, 61);
+            this.tbEmployeeName.Location = new System.Drawing.Point(243, 43);
             this.tbEmployeeName.Name = "tbEmployeeName";
             this.tbEmployeeName.Size = new System.Drawing.Size(132, 22);
             this.tbEmployeeName.TabIndex = 16;
@@ -83,7 +83,7 @@ namespace UserInterface.UserControls.Employee
             // 
             this.lblEmployeeName.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblEmployeeName.AutoSize = true;
-            this.lblEmployeeName.Location = new System.Drawing.Point(51, 64);
+            this.lblEmployeeName.Location = new System.Drawing.Point(143, 46);
             this.lblEmployeeName.Name = "lblEmployeeName";
             this.lblEmployeeName.Size = new System.Drawing.Size(75, 17);
             this.lblEmployeeName.TabIndex = 15;
@@ -99,7 +99,7 @@ namespace UserInterface.UserControls.Employee
             this.Controls.Add(this.tbEmployeeName);
             this.Controls.Add(this.lblEmployeeName);
             this.Name = "UCSearchEmployees";
-            this.Size = new System.Drawing.Size(810, 526);
+            this.Size = new System.Drawing.Size(970, 586);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSearchEmployees)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

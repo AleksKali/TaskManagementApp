@@ -40,7 +40,7 @@ namespace UserInterface.UserControls.Task
             // btnDelete
             // 
             this.btnDelete.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnDelete.Location = new System.Drawing.Point(688, 183);
+            this.btnDelete.Location = new System.Drawing.Point(856, 127);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(108, 27);
             this.btnDelete.TabIndex = 24;
@@ -51,7 +51,7 @@ namespace UserInterface.UserControls.Task
             // btnDetails
             // 
             this.btnDetails.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnDetails.Location = new System.Drawing.Point(688, 133);
+            this.btnDetails.Location = new System.Drawing.Point(856, 77);
             this.btnDetails.Name = "btnDetails";
             this.btnDetails.Size = new System.Drawing.Size(108, 28);
             this.btnDetails.TabIndex = 23;
@@ -63,19 +63,19 @@ namespace UserInterface.UserControls.Task
             // 
             this.dgvSearchTasks.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dgvSearchTasks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSearchTasks.Location = new System.Drawing.Point(19, 107);
+            this.dgvSearchTasks.Location = new System.Drawing.Point(3, 53);
             this.dgvSearchTasks.Name = "dgvSearchTasks";
             this.dgvSearchTasks.RowHeadersWidth = 51;
             this.dgvSearchTasks.RowTemplate.Height = 24;
-            this.dgvSearchTasks.Size = new System.Drawing.Size(653, 365);
+            this.dgvSearchTasks.Size = new System.Drawing.Size(843, 482);
             this.dgvSearchTasks.TabIndex = 22;
             // 
             // tbTaskTitle
             // 
             this.tbTaskTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tbTaskTitle.Location = new System.Drawing.Point(173, 66);
+            this.tbTaskTitle.Location = new System.Drawing.Point(238, 12);
             this.tbTaskTitle.Name = "tbTaskTitle";
-            this.tbTaskTitle.Size = new System.Drawing.Size(132, 22);
+            this.tbTaskTitle.Size = new System.Drawing.Size(157, 22);
             this.tbTaskTitle.TabIndex = 21;
             this.tbTaskTitle.TextChanged += new System.EventHandler(this.tbTaskTitle_TextChanged);
             // 
@@ -83,7 +83,7 @@ namespace UserInterface.UserControls.Task
             // 
             this.lblEmployeeName.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblEmployeeName.AutoSize = true;
-            this.lblEmployeeName.Location = new System.Drawing.Point(73, 69);
+            this.lblEmployeeName.Location = new System.Drawing.Point(138, 15);
             this.lblEmployeeName.Name = "lblEmployeeName";
             this.lblEmployeeName.Size = new System.Drawing.Size(69, 17);
             this.lblEmployeeName.TabIndex = 20;
@@ -99,7 +99,7 @@ namespace UserInterface.UserControls.Task
             this.Controls.Add(this.tbTaskTitle);
             this.Controls.Add(this.lblEmployeeName);
             this.Name = "UCSearchTasks";
-            this.Size = new System.Drawing.Size(847, 538);
+            this.Size = new System.Drawing.Size(977, 538);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSearchTasks)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -20,9 +20,16 @@ namespace UserInterface.Dialogs
 
         private void btnUpdateTask_Click(object sender, EventArgs e)
         {
-            //validacija
-            Controller.Instance.UpdateTask(tbTaskId, cbProject, tbTitle, rtbDescription, cbAssignee, cbStatus, dtpDueDate);
-            this.DialogResult = DialogResult.OK;
+
+            if (!(Controller.Instance.ValidateTaskData(tbTitle, rtbDescription)))
+            {
+                return;
+            }
+            else
+            {
+                Controller.Instance.UpdateTask(tbTaskId, cbProject, tbTitle, rtbDescription, cbAssignee, cbStatus, dtpDueDate);
+                this.DialogResult = DialogResult.OK;
+            }
         }
 
         private void TaskDetailDialog_Load(object sender, EventArgs e)

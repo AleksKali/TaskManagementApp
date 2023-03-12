@@ -43,8 +43,8 @@ namespace UserInterface.Dialogs
             this.tbTaskId = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cbProject = new System.Windows.Forms.ComboBox();
             this.rtbDescription = new System.Windows.Forms.RichTextBox();
+            this.cbProject = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -179,14 +179,6 @@ namespace UserInterface.Dialogs
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Update fields";
             // 
-            // cbProject
-            // 
-            this.cbProject.FormattingEnabled = true;
-            this.cbProject.Location = new System.Drawing.Point(312, 76);
-            this.cbProject.Name = "cbProject";
-            this.cbProject.Size = new System.Drawing.Size(221, 24);
-            this.cbProject.TabIndex = 27;
-            // 
             // rtbDescription
             // 
             this.rtbDescription.Location = new System.Drawing.Point(178, 78);
@@ -194,6 +186,14 @@ namespace UserInterface.Dialogs
             this.rtbDescription.Size = new System.Drawing.Size(507, 115);
             this.rtbDescription.TabIndex = 31;
             this.rtbDescription.Text = "";
+            // 
+            // cbProject
+            // 
+            this.cbProject.FormattingEnabled = true;
+            this.cbProject.Location = new System.Drawing.Point(312, 76);
+            this.cbProject.Name = "cbProject";
+            this.cbProject.Size = new System.Drawing.Size(221, 24);
+            this.cbProject.TabIndex = 27;
             // 
             // TaskDetailDialog
             // 
@@ -207,6 +207,7 @@ namespace UserInterface.Dialogs
             this.Controls.Add(this.btnUpdateTask);
             this.Controls.Add(this.label3);
             this.Name = "TaskDetailDialog";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "TaskDetailDialog";
             this.Load += new System.EventHandler(this.TaskDetailDialog_Load);
             this.groupBox1.ResumeLayout(false);

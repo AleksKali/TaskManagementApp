@@ -72,11 +72,29 @@
     <Compile Include="UserControls\Employee\UCAddEmployee.Designer.cs">
       <DependentUpon>UCAddEmployee.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Employee\UCEmployeeStats.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Employee\UCEmployeeStats.Designer.cs">
+      <DependentUpon>UCEmployeeStats.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Employee\UCSearchEmployees.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControls\Employee\UCSearchEmployees.Designer.cs">
       <DependentUpon>UCSearchEmployees.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Project\UCProjectSize.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Project\UCProjectSize.Designer.cs">
+      <DependentUpon>UCProjectSize.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Project\UCProjectStatus.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Project\UCProjectStatus.Designer.cs">
+      <DependentUpon>UCProjectStatus.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Task\UCAddTask.cs">
       <SubType>UserControl</SubType>
@@ -111,8 +129,17 @@
     <EmbeddedResource Include="UserControls\Employee\UCAddEmployee.resx">
       <DependentUpon>UCAddEmployee.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Employee\UCEmployeeStats.resx">
+      <DependentUpon>UCEmployeeStats.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Employee\UCSearchEmployees.resx">
       <DependentUpon>UCSearchEmployees.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Project\UCProjectSize.resx">
+      <DependentUpon>UCProjectSize.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Project\UCProjectStatus.resx">
+      <DependentUpon>UCProjectStatus.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Task\UCAddTask.resx">
       <DependentUpon>UCAddTask.cs</DependentUpon>
