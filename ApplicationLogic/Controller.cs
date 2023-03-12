@@ -69,6 +69,8 @@ namespace ApplicationLogic
             
 
         }
+
+       
         public void ShowMediumProjects(DataGridView dgvProjectsSize)
         {
             
@@ -339,6 +341,26 @@ namespace ApplicationLogic
             tbTitle.Text = null;
             rtbDescription.Text = null;
         }
+        public void SearchTasksByEmployee(DataGridView dgvSearchTasks, TextBox tbEmployeeName)
+        {
+            try
+            {
+                tasks = taskRepository.SearchByEmployee(tbEmployeeName.Text);
+
+                dgvSearchTasks.DataSource = tasks;
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Failed to load tasks.");
+                Debug.WriteLine(">>>>>>> " + ex.Message);
+            }
+        }
+        public void ResetTaskSearch(TextBox tb)
+        {
+            tb.Text = null;
+        }
 
         #endregion
 
@@ -409,7 +431,7 @@ namespace ApplicationLogic
                 catch (Exception ex)
                 {
 
-                    MessageBox.Show("Failed to delete object" + ex.Message);
+                    MessageBox.Show("You can't delete an employee that has assigned tasks.");
                     Debug.WriteLine(">>>>>>> " + ex.Message);
                 }
 

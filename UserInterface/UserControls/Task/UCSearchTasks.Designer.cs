@@ -34,6 +34,8 @@ namespace UserInterface.UserControls.Task
             this.dgvSearchTasks = new System.Windows.Forms.DataGridView();
             this.tbTaskTitle = new System.Windows.Forms.TextBox();
             this.lblEmployeeName = new System.Windows.Forms.Label();
+            this.tbEmployeeName = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSearchTasks)).BeginInit();
             this.SuspendLayout();
             // 
@@ -73,26 +75,49 @@ namespace UserInterface.UserControls.Task
             // tbTaskTitle
             // 
             this.tbTaskTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tbTaskTitle.Location = new System.Drawing.Point(238, 12);
+            this.tbTaskTitle.Location = new System.Drawing.Point(174, 17);
             this.tbTaskTitle.Name = "tbTaskTitle";
             this.tbTaskTitle.Size = new System.Drawing.Size(157, 22);
             this.tbTaskTitle.TabIndex = 21;
+            this.tbTaskTitle.Click += new System.EventHandler(this.tbTaskTitle_Click);
             this.tbTaskTitle.TextChanged += new System.EventHandler(this.tbTaskTitle_TextChanged);
             // 
             // lblEmployeeName
             // 
             this.lblEmployeeName.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblEmployeeName.AutoSize = true;
-            this.lblEmployeeName.Location = new System.Drawing.Point(138, 15);
+            this.lblEmployeeName.Location = new System.Drawing.Point(36, 17);
             this.lblEmployeeName.Name = "lblEmployeeName";
-            this.lblEmployeeName.Size = new System.Drawing.Size(69, 17);
+            this.lblEmployeeName.Size = new System.Drawing.Size(132, 17);
             this.lblEmployeeName.TabIndex = 20;
-            this.lblEmployeeName.Text = "Task title:";
+            this.lblEmployeeName.Text = "Search by task title:";
+            // 
+            // tbEmployeeName
+            // 
+            this.tbEmployeeName.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.tbEmployeeName.Location = new System.Drawing.Point(611, 17);
+            this.tbEmployeeName.Name = "tbEmployeeName";
+            this.tbEmployeeName.Size = new System.Drawing.Size(157, 22);
+            this.tbEmployeeName.TabIndex = 26;
+            this.tbEmployeeName.Click += new System.EventHandler(this.tbEmployeeName_Click);
+            this.tbEmployeeName.TextChanged += new System.EventHandler(this.tbEmployeeName_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(425, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(180, 17);
+            this.label1.TabIndex = 25;
+            this.label1.Text = "Search by employee name:";
             // 
             // UCSearchTasks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.tbEmployeeName);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnDetails);
             this.Controls.Add(this.dgvSearchTasks);
@@ -113,5 +138,7 @@ namespace UserInterface.UserControls.Task
         private System.Windows.Forms.DataGridView dgvSearchTasks;
         private System.Windows.Forms.TextBox tbTaskTitle;
         private System.Windows.Forms.Label lblEmployeeName;
+        private System.Windows.Forms.TextBox tbEmployeeName;
+        private System.Windows.Forms.Label label1;
     }
 }

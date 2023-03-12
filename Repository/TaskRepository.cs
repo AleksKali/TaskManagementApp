@@ -78,5 +78,18 @@ namespace Repository
                 broker.CloseConnection();
             }
         }
+
+        public List<Task> SearchByEmployee(string text)
+        {
+            try
+            {
+                broker.OpenConnection();
+                return broker.SearchTasksByEmployee(text);
+            }
+            finally
+            {
+                broker.CloseConnection();
+            }
+        }
     }
 }

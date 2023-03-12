@@ -38,6 +38,8 @@ namespace UserInterface.UserControls.Task
                 }
             }
             Controller.Instance.SetTaskDataGridView(dgvSearchTasks);
+            Controller.Instance.ResetTaskSearch(tbTaskTitle);
+            Controller.Instance.ResetTaskSearch(tbEmployeeName);
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -45,12 +47,31 @@ namespace UserInterface.UserControls.Task
             
             Controller.Instance.DeleteTask(dgvSearchTasks);
             Controller.Instance.SetTaskDataGridView(dgvSearchTasks);
-             
+            Controller.Instance.ResetTaskSearch(tbTaskTitle);
+            Controller.Instance.ResetTaskSearch(tbEmployeeName);
+
         }
 
         private void tbTaskTitle_TextChanged(object sender, EventArgs e)
         {
             Controller.Instance.SearchTasks(dgvSearchTasks, tbTaskTitle);
+           
+        }
+
+        private void tbEmployeeName_TextChanged(object sender, EventArgs e)
+        {
+            Controller.Instance.SearchTasksByEmployee(dgvSearchTasks, tbEmployeeName);
+            
+        }
+
+        private void tbTaskTitle_Click(object sender, EventArgs e)
+        {
+            Controller.Instance.ResetTaskSearch(tbEmployeeName);
+        }
+
+        private void tbEmployeeName_Click(object sender, EventArgs e)
+        {
+            Controller.Instance.ResetTaskSearch(tbTaskTitle);
         }
     }
 }

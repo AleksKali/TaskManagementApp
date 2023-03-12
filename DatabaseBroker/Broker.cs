@@ -90,6 +90,7 @@ namespace DatabaseBroker
             return projects;
         }
 
+       
 
         public List<Project> GetSmallProjects()
         {
@@ -291,6 +292,43 @@ namespace DatabaseBroker
             command.ExecuteNonQuery();
         }
 
+        public List<Task> SearchTasksByEmployee(string text)
+        {
+            List<Task> tasks = new List<Task>();
+
+            SqlCommand command = new SqlCommand("", connection);
+            command.CommandText = $"SELECT t.id AS taskId, t.title AS taskTitle, t.description AS taskDescription, t.due_date AS taskDueDate, t.status AS taskStatus, e.full_name AS employeeFullName, e.id AS employeeId, p.id AS projectId, p.title AS projectTitle FROM task t JOIN employee e ON (t.assignee=e.id) JOIN Project p ON(t.project_id=p.id) WHERE e.full_name LIKE '%{text}%'";
+
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Task t = new Task
+                    {
+                        TaskId = (int)reader["taskId"],
+                        Title = (string)reader["taskTitle"],
+                        Description = (string)reader["taskDescription"],
+                        DueDate = (DateTime)reader["taskDueDate"],
+                        Status = (TaskStatus)reader["taskStatus"],
+                        Assignee = new Employee
+                        {
+                            FullName = (string)reader["employeeFullName"],
+                            EmployeeId = (int)reader["employeeId"]
+                        },
+                        Project = new Project
+                        {
+                            Title = (string)reader["projectTitle"],
+                            ProjectId = (int)reader["projectId"]
+                        }
+
+                    };
+
+                    tasks.Add(t);
+                }
+            }
+            return tasks;
+        }
+
         #endregion
 
         #region employee
@@ -385,7 +423,6 @@ namespace DatabaseBroker
             command.ExecuteNonQuery();
         }
 
-       
 
         public List<Employee> GetTopEmployees()
         {
