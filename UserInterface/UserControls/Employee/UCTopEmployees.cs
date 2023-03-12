@@ -11,20 +11,17 @@ using System.Windows.Forms;
 
 namespace UserInterface.UserControls.Employee
 {
-    public partial class UCEmployeeStats : UserControl
+    public partial class UCTopEmployees : UserControl
     {
-        public UCEmployeeStats()
+        public UCTopEmployees()
         {
             InitializeComponent();
             Init();
         }
-
         private void Init()
         {
             Controller.Instance.GetTopEmployees(dgvTopEmployees);
         }
-
-        
 
     }
 }

@@ -25,4 +25,5 @@ C:\Users\SashkaBreBre\source\repos\TaskManagement\UserInterface\obj\Debug\UserIn
 C:\Users\SashkaBreBre\source\repos\TaskManagement\UserInterface\obj\Debug\UserInterface.Dialogs.TaskDetailDialog.resources
 C:\Users\SashkaBreBre\source\repos\TaskManagement\UserInterface\obj\Debug\UserInterface.UserControls.Project.UCProjectStatus.resources
 C:\Users\SashkaBreBre\source\repos\TaskManagement\UserInterface\obj\Debug\UserInterface.UserControls.Project.UCProjectSize.resources
-C:\Users\SashkaBreBre\source\repos\TaskManagement\UserInterface\obj\Debug\UserInterface.UserControls.Employee.UCEmployeeStats.resources
+C:\Users\SashkaBreBre\source\repos\TaskManagement\UserInterface\obj\Debug\UserInterface.UserControls.Employee.UCTopEmployees.resources
+C:\Users\SashkaBreBre\source\repos\TaskManagement\UserInterface\obj\Debug\UserInterface.UserControls.Employee.UCEmployeeKPI.resources

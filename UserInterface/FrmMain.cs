@@ -19,12 +19,12 @@ namespace UserInterface
         public FrmMain()
         {
             InitializeComponent();
-            ChangePanel(new UCEmployeeStats());
+            ChangePanel(new UCTopEmployees());
         }
 
        
 
-        public void ChangePanel(UserControl userControl) //da li premestiti u controller-a?
+        public void ChangePanel(UserControl userControl) 
         {
             pnlMain.Controls.Clear();
             userControl.Dock = DockStyle.Fill;
@@ -65,7 +65,14 @@ namespace UserInterface
 
         private void employeeStatisticsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ChangePanel(new UCEmployeeStats());
+            ChangePanel(new UCTopEmployees());
+        }
+
+        
+
+        private void employeeKPIToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangePanel(new UCEmployeeKPI());
         }
     }
 }

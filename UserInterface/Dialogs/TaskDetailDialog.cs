@@ -21,7 +21,7 @@ namespace UserInterface.Dialogs
         private void btnUpdateTask_Click(object sender, EventArgs e)
         {
 
-            if (!(Controller.Instance.ValidateTaskData(tbTitle, rtbDescription)))
+            if (!(Controller.Instance.ValidateTaskData(tbTitle, rtbDescription, dtpDueDate)))
             {
                 return;
             }

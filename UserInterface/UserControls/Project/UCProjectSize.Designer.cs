@@ -90,11 +90,11 @@ namespace UserInterface.UserControls.Project
             // dgvProjectsSize
             // 
             this.dgvProjectsSize.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProjectsSize.Location = new System.Drawing.Point(239, 174);
+            this.dgvProjectsSize.Location = new System.Drawing.Point(168, 174);
             this.dgvProjectsSize.Name = "dgvProjectsSize";
             this.dgvProjectsSize.RowHeadersWidth = 51;
             this.dgvProjectsSize.RowTemplate.Height = 24;
-            this.dgvProjectsSize.Size = new System.Drawing.Size(469, 292);
+            this.dgvProjectsSize.Size = new System.Drawing.Size(581, 292);
             this.dgvProjectsSize.TabIndex = 4;
             // 
             // label2
@@ -103,9 +103,9 @@ namespace UserInterface.UserControls.Project
             this.label2.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.label2.Location = new System.Drawing.Point(336, 18);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(183, 17);
+            this.label2.Size = new System.Drawing.Size(156, 17);
             this.label2.TabIndex = 5;
-            this.label2.Text = "(up to 3 people on projects)";
+            this.label2.Text = "(contains up to 3 tasks)";
             // 
             // label3
             // 
@@ -113,9 +113,9 @@ namespace UserInterface.UserControls.Project
             this.label3.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.label3.Location = new System.Drawing.Point(336, 95);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(216, 17);
+            this.label3.Size = new System.Drawing.Size(196, 17);
             this.label3.TabIndex = 6;
-            this.label3.Text = "(more than 10 people on project)";
+            this.label3.Text = "(contains more than 10 tasks)";
             // 
             // label4
             // 
@@ -123,9 +123,9 @@ namespace UserInterface.UserControls.Project
             this.label4.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.label4.Location = new System.Drawing.Point(336, 58);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(176, 17);
+            this.label4.Size = new System.Drawing.Size(156, 17);
             this.label4.TabIndex = 7;
-            this.label4.Text = "(4 to 10 people on project)";
+            this.label4.Text = "(contains 4 to 10 tasks)";
             // 
             // groupBox1
             // 
@@ -149,9 +149,9 @@ namespace UserInterface.UserControls.Project
             this.label5.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.label5.Location = new System.Drawing.Point(248, 502);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(477, 17);
+            this.label5.Size = new System.Drawing.Size(468, 17);
             this.label5.TabIndex = 9;
-            this.label5.Text = "*Number of people working on a project was used to estimate the size of it.";
+            this.label5.Text = "*Number of tasks that project contains was used to estimate the size of it.";
             // 
             // UCProjectSize
             // 

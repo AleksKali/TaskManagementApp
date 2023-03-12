@@ -41,6 +41,7 @@ namespace UserInterface
             this.projectSizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.projectStatusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlMain = new System.Windows.Forms.Panel();
+            this.employeeKPIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,7 +63,8 @@ namespace UserInterface
             this.employeeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.createEmployeeToolStripMenuItem,
             this.searchEmpoyeesToolStripMenuItem,
-            this.employeeStatisticsToolStripMenuItem});
+            this.employeeStatisticsToolStripMenuItem,
+            this.employeeKPIToolStripMenuItem});
             this.employeeToolStripMenuItem.Name = "employeeToolStripMenuItem";
             this.employeeToolStripMenuItem.Size = new System.Drawing.Size(89, 24);
             this.employeeToolStripMenuItem.Text = "Employee";
@@ -70,21 +72,21 @@ namespace UserInterface
             // createEmployeeToolStripMenuItem
             // 
             this.createEmployeeToolStripMenuItem.Name = "createEmployeeToolStripMenuItem";
-            this.createEmployeeToolStripMenuItem.Size = new System.Drawing.Size(218, 26);
+            this.createEmployeeToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.createEmployeeToolStripMenuItem.Text = "Create employee";
             this.createEmployeeToolStripMenuItem.Click += new System.EventHandler(this.createEmployeeToolStripMenuItem_Click);
             // 
             // searchEmpoyeesToolStripMenuItem
             // 
             this.searchEmpoyeesToolStripMenuItem.Name = "searchEmpoyeesToolStripMenuItem";
-            this.searchEmpoyeesToolStripMenuItem.Size = new System.Drawing.Size(218, 26);
-            this.searchEmpoyeesToolStripMenuItem.Text = "Search empoyees";
+            this.searchEmpoyeesToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.searchEmpoyeesToolStripMenuItem.Text = "Search employees";
             this.searchEmpoyeesToolStripMenuItem.Click += new System.EventHandler(this.searchEmpoyeesToolStripMenuItem_Click);
             // 
             // employeeStatisticsToolStripMenuItem
             // 
             this.employeeStatisticsToolStripMenuItem.Name = "employeeStatisticsToolStripMenuItem";
-            this.employeeStatisticsToolStripMenuItem.Size = new System.Drawing.Size(218, 26);
+            this.employeeStatisticsToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.employeeStatisticsToolStripMenuItem.Text = "Employee statistics";
             this.employeeStatisticsToolStripMenuItem.Click += new System.EventHandler(this.employeeStatisticsToolStripMenuItem_Click);
             // 
@@ -141,6 +143,13 @@ namespace UserInterface
             this.pnlMain.Size = new System.Drawing.Size(1012, 543);
             this.pnlMain.TabIndex = 1;
             // 
+            // employeeKPIToolStripMenuItem
+            // 
+            this.employeeKPIToolStripMenuItem.Name = "employeeKPIToolStripMenuItem";
+            this.employeeKPIToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.employeeKPIToolStripMenuItem.Text = "Employee KPI";
+            this.employeeKPIToolStripMenuItem.Click += new System.EventHandler(this.employeeKPIToolStripMenuItem_Click);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -173,6 +182,7 @@ namespace UserInterface
         private System.Windows.Forms.ToolStripMenuItem projectSizeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem projectStatusToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem employeeStatisticsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem employeeKPIToolStripMenuItem;
     }
 }
 

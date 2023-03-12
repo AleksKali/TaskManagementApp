@@ -1,7 +1,7 @@
 ﻿
 namespace UserInterface.UserControls.Employee
 {
-    partial class UCEmployeeStats
+    partial class UCTopEmployees
     {
         /// <summary> 
         /// Required designer variable.
@@ -29,49 +29,38 @@ namespace UserInterface.UserControls.Employee
         /// </summary>
         private void InitializeComponent()
         {
-            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvTopEmployees = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTopEmployees)).BeginInit();
             this.SuspendLayout();
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(117, 449);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(46, 17);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "label2";
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(117, 65);
+            this.label1.Location = new System.Drawing.Point(113, 61);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(234, 17);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Top 5 employees in the past month:";
+            this.label1.Size = new System.Drawing.Size(478, 17);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Top 5 employees in the past month (resolved the largest number of tasks):";
             // 
             // dgvTopEmployees
             // 
             this.dgvTopEmployees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTopEmployees.Location = new System.Drawing.Point(120, 104);
+            this.dgvTopEmployees.Location = new System.Drawing.Point(90, 97);
             this.dgvTopEmployees.Name = "dgvTopEmployees";
             this.dgvTopEmployees.RowHeadersWidth = 51;
             this.dgvTopEmployees.RowTemplate.Height = 24;
-            this.dgvTopEmployees.Size = new System.Drawing.Size(727, 301);
-            this.dgvTopEmployees.TabIndex = 3;
+            this.dgvTopEmployees.Size = new System.Drawing.Size(866, 301);
+            this.dgvTopEmployees.TabIndex = 5;
             // 
-            // UCEmployeeStats
+            // UCTopEmployees
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvTopEmployees);
-            this.Name = "UCEmployeeStats";
-            this.Size = new System.Drawing.Size(921, 530);
+            this.Name = "UCTopEmployees";
+            this.Size = new System.Drawing.Size(995, 461);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTopEmployees)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -80,7 +69,6 @@ namespace UserInterface.UserControls.Employee
 
         #endregion
 
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgvTopEmployees;
     }

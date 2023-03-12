@@ -113,10 +113,11 @@ namespace UserInterface.UserControls.Task
             // dtpDueDate
             // 
             this.dtpDueDate.Location = new System.Drawing.Point(295, 365);
-            this.dtpDueDate.MinDate = new System.DateTime(2023, 3, 10, 0, 0, 0, 0);
+            this.dtpDueDate.MinDate = new System.DateTime(2023, 3, 12, 0, 0, 0, 0);
             this.dtpDueDate.Name = "dtpDueDate";
             this.dtpDueDate.Size = new System.Drawing.Size(472, 22);
             this.dtpDueDate.TabIndex = 11;
+            this.dtpDueDate.Value = new System.DateTime(2023, 3, 12, 0, 0, 0, 0);
             // 
             // btnSaveTask
             // 
