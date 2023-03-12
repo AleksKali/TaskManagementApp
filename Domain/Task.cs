@@ -22,5 +22,6 @@ namespace Domain
         public Project Project { get; set; }
         public DateTime DueDate { get; set; }
         public TaskStatus Status { get; set; }
+        
     }
 }

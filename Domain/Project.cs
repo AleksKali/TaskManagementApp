@@ -12,6 +12,9 @@ namespace Domain
         public string Title { get; set; }
         public string Description { get; set; }
 
+        public double Percentage { get; set; }
+        public int NumOFEmployees { get; set; }
+
         public override string ToString()
         {
             return Title;
