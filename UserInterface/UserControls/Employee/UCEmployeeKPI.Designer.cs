@@ -95,10 +95,10 @@ namespace UserInterface.UserControls.Employee
             this.label5.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.label5.Location = new System.Drawing.Point(100, 483);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(871, 17);
+            this.label5.Size = new System.Drawing.Size(883, 17);
             this.label5.TabIndex = 8;
-            this.label5.Text = "*If the value of efficiency is 80 that means that the employee completed the task" +
-    " in 80% of the estimated time it should take to complete it.";
+            this.label5.Text = "*If the value of efficiency is 0.80 that means that the employee completed the ta" +
+    "sk in 80% of the estimated time it should take to complete it.";
             // 
             // label6
             // 

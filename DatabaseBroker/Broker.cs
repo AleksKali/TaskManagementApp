@@ -422,7 +422,7 @@ namespace DatabaseBroker
             List<Employee> employees = new List<Employee>();
 
             SqlCommand command = new SqlCommand("", connection);
-            command.CommandText = $"SELECT e.*, ROUND((SUM(ROUND(CAST(DATEDIFF(DAY, t.resolved, t.due_date) AS FLOAT) / CAST(DATEDIFF(DAY, t.created_at, t.due_date) AS FLOAT), 2)) / COUNT(t.id)) * 100, 2) AS Efficiency FROM task t INNER JOIN Employee e ON e.id = t.assignee WHERE t.status = 2 GROUP by e.id, e.full_name, e.email, e.phone, e.date_of_birth, e.salary";
+            command.CommandText = $"SELECT e.*, ROUND((SUM(ROUND(CAST(DATEDIFF(DAY, t.resolved, t.due_date) AS FLOAT) / CAST(DATEDIFF(DAY, t.created_at, t.due_date) AS FLOAT), 2)) / COUNT(t.id)), 2) AS Efficiency FROM task t INNER JOIN Employee e ON e.id = t.assignee WHERE t.status = 2 GROUP by e.id, e.full_name, e.email, e.phone, e.date_of_birth, e.salary";
 
             using (SqlDataReader reader = command.ExecuteReader())
             {
