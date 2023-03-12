@@ -64,31 +64,7 @@ namespace DatabaseBroker
             return projects;
         }
 
-        public List<Project> GetSmallProjects()
-        {
-            List<Project> projects = new List<Project>();
-
-            SqlCommand command = new SqlCommand("", connection);
-            command.CommandText = $"SELECT COUNT(e.id) AS NumOfEmployees, p.* FROM Project p JOIN Task t ON t.project_id = p.id JOIN Employee e ON e.id = t.assignee GROUP BY p.id, p.title, p.description HAVING COUNT(t.id) <= 3";
-
-            using (SqlDataReader reader = command.ExecuteReader())
-            {
-                while (reader.Read())
-                {
-                    Project p = new Project
-                    {
-                        ProjectId = (int)reader["id"],
-                        Title = (string)reader["title"],
-                        Description = (string)reader["description"],
-                        NumOFEmployees = (int)reader["NumOfEmployees"]
-
-                    };
-
-                    projects.Add(p);
-                }
-            }
-            return projects;
-        }
+        
 
         public List<Project> GetAllProjects()
         {
@@ -114,12 +90,13 @@ namespace DatabaseBroker
             return projects;
         }
 
-        public List<Project> GetLargeProjects()
+
+        public List<Project> GetSmallProjects()
         {
             List<Project> projects = new List<Project>();
 
             SqlCommand command = new SqlCommand("", connection);
-            command.CommandText = $"SELECT COUNT(e.id) AS NumOfEmployees, p.* FROM Project p JOIN Task t ON t.project_id = p.id JOIN Employee e ON e.id = t.assignee GROUP BY p.id, p.title, p.description HAVING COUNT(t.id) > 10";
+            command.CommandText = $"SELECT COUNT(DISTINCT e.id) AS NumOfEmployees, p.*, COUNT(DISTINCT t.id) AS NumOfTasks FROM Project p JOIN Task t ON t.project_id = p.id JOIN Employee e ON e.id = t.assignee GROUP BY p.id, p.title, p.description HAVING COUNT(t.id) <= 3";
 
             using (SqlDataReader reader = command.ExecuteReader())
             {
@@ -130,7 +107,8 @@ namespace DatabaseBroker
                         ProjectId = (int)reader["id"],
                         Title = (string)reader["title"],
                         Description = (string)reader["description"],
-                        NumOFEmployees = (int)reader["NumOfEmployees"]
+                        NumOFEmployees = (int)reader["NumOfEmployees"],
+                        NumOfTasks = (int)reader["NumOfTasks"]
 
                     };
 
@@ -145,7 +123,7 @@ namespace DatabaseBroker
             List<Project> projects = new List<Project>();
 
             SqlCommand command = new SqlCommand("", connection);
-            command.CommandText = $"SELECT COUNT(e.id) AS NumOfEmployees, p.* FROM Project p JOIN Task t ON t.project_id = p.id JOIN Employee e ON e.id = t.assignee GROUP BY p.id, p.title, p.description HAVING COUNT(t.id) BETWEEN 4 AND 10";
+            command.CommandText = $"SELECT COUNT(DISTINCT e.id) AS NumOfEmployees, p.*, COUNT(DISTINCT t.id) AS NumOfTasks FROM Project p JOIN Task t ON t.project_id = p.id JOIN Employee e ON e.id = t.assignee GROUP BY p.id, p.title, p.description HAVING COUNT(t.id) BETWEEN 4 AND 10";
 
             using (SqlDataReader reader = command.ExecuteReader())
             {
@@ -156,7 +134,8 @@ namespace DatabaseBroker
                         ProjectId = (int)reader["id"],
                         Title = (string)reader["title"],
                         Description = (string)reader["description"],
-                        NumOFEmployees = (int)reader["NumOfEmployees"]
+                        NumOFEmployees = (int)reader["NumOfEmployees"],
+                        NumOfTasks = (int)reader["NumOfTasks"]
 
                     };
 
@@ -165,6 +144,34 @@ namespace DatabaseBroker
             }
             return projects;
         }
+
+        public List<Project> GetLargeProjects()
+        {
+            List<Project> projects = new List<Project>();
+
+            SqlCommand command = new SqlCommand("", connection);
+            command.CommandText = $"SELECT COUNT(DISTINCT e.id) AS NumOfEmployees, p.*, COUNT(DISTINCT t.id) AS NumOfTasks FROM Project p JOIN Task t ON t.project_id = p.id JOIN Employee e ON e.id = t.assignee GROUP BY p.id, p.title, p.description HAVING COUNT(t.id) > 10";
+
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Project p = new Project
+                    {
+                        ProjectId = (int)reader["id"],
+                        Title = (string)reader["title"],
+                        Description = (string)reader["description"],
+                        NumOFEmployees = (int)reader["NumOfEmployees"],
+                        NumOfTasks = (int)reader["NumOfTasks"]
+
+                    };
+
+                    projects.Add(p);
+                }
+            }
+            return projects;
+        }
+
         #endregion
 
         #region task
@@ -176,23 +183,7 @@ namespace DatabaseBroker
             command.CommandText = $"delete from task WHERE id={obj.TaskId}";
             command.ExecuteNonQuery();
         }
-        //public void UpdateTask(Task obj) //ne radi
-        //{
-
-        //    SqlCommand command = new SqlCommand("", connection);
-        //    command.CommandText = $"update task set title = @Title, description = @Description, assignee = @Assignee, due_date = @DueDate, status = @Status, updated_at = @UpdatedAt WHERE id= {obj.TaskId}";
-
-
-        //    command.Parameters.AddWithValue("Title", obj.Title);
-        //    command.Parameters.AddWithValue("Description", obj.Description);
-        //    command.Parameters.AddWithValue("Assignee", obj.Assignee.EmployeeId);
-        //    command.Parameters.AddWithValue("DueDate", obj.DueDate);
-        //    command.Parameters.AddWithValue("Status", obj.Status);
-        //    command.Parameters.AddWithValue("UpdatedAt", DateTime.Now);
-
-
-        //    command.ExecuteNonQuery();
-        //}
+        
         public void UpdateTask(Task obj)
         {
             SqlCommand command = new SqlCommand("dbo.UpdateTask", connection);
@@ -213,7 +204,7 @@ namespace DatabaseBroker
             List<Task> tasks = new List<Task>();
 
             SqlCommand command = new SqlCommand("", connection);
-            command.CommandText = $"SELECT t.id as taskId, t.title as taskTitle, t.description as taskDescription, t.due_date as taskDueDate, t.status as taskStatus, e.full_name as employeeFullName, e.id as employeeId, p.id as projectId, p.title as projectTitle from task t join employee e on (t.assignee=e.id) join Project p on(t.project_id=p.id)";
+            command.CommandText = $"SELECT t.id AS taskId, t.title AS taskTitle, t.description AS taskDescription, t.due_date AS taskDueDate, t.status AS taskStatus, e.full_name AS employeeFullName, e.id AS employeeId, p.id AS projectId, p.title AS projectTitle FROM task t JOIN employee e ON (t.assignee=e.id) JOIN Project p ON(t.project_id=p.id)";
 
             using (SqlDataReader reader = command.ExecuteReader())
             {
@@ -226,6 +217,7 @@ namespace DatabaseBroker
                         Description = (string)reader["taskDescription"],
                         DueDate = (DateTime)reader["taskDueDate"],
                         Status = (TaskStatus)reader["taskStatus"],
+                        
                         Assignee = new Employee
                         {
                             FullName = (string)reader["employeeFullName"],
@@ -251,7 +243,7 @@ namespace DatabaseBroker
             List<Task> tasks = new List<Task>();
 
             SqlCommand command = new SqlCommand("", connection);
-            command.CommandText = $"SELECT t.id as taskId, t.title as taskTitle, t.description as taskDescription, t.due_date as taskDueDate, t.status as taskStatus, e.full_name as employeeFullName, e.id as employeeId, p.id as projectId, p.title as projectTitle from task t join employee e on (t.assignee=e.id) join Project p on(t.project_id=p.id) WHERE t.title LIKE '%{criteria}%'";
+            command.CommandText = $"SELECT t.id AS taskId, t.title AS taskTitle, t.description AS taskDescription, t.due_date AS taskDueDate, t.status AS taskStatus, e.full_name AS employeeFullName, e.id AS employeeId, p.id AS projectId, p.title AS projectTitle FROM task t JOIN employee e ON (t.assignee=e.id) JOIN Project p ON(t.project_id=p.id) WHERE t.title LIKE '%{criteria}%'";
 
             using (SqlDataReader reader = command.ExecuteReader())
             {
@@ -413,7 +405,8 @@ namespace DatabaseBroker
                         Email = (string)reader["email"],
                         Phone = (string)reader["phone"],
                         DateOfBirth = (DateTime)reader["date_of_birth"],
-                        Salary = (int)reader["salary"]
+                        Salary = (int)reader["salary"],
+                        ResolvedTasks = (int)reader["FinishedTasks"]
 
                     };
 
@@ -422,7 +415,35 @@ namespace DatabaseBroker
             }
             return employees;
 
+        }
 
+        public List<Employee> GetEmployeeKPI()
+        {
+            List<Employee> employees = new List<Employee>();
+
+            SqlCommand command = new SqlCommand("", connection);
+            command.CommandText = $"SELECT e.*, ROUND((SUM(ROUND(CAST(DATEDIFF(DAY, t.resolved, t.due_date) AS FLOAT) / CAST(DATEDIFF(DAY, t.created_at, t.due_date) AS FLOAT), 2)) / COUNT(t.id)) * 100, 2) AS Efficiency FROM task t INNER JOIN Employee e ON e.id = t.assignee WHERE t.status = 2 GROUP by e.id, e.full_name, e.email, e.phone, e.date_of_birth, e.salary";
+
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Employee e = new Employee
+                    {
+                        EmployeeId = (int)reader["id"],
+                        FullName = (string)reader["full_name"],
+                        Email = (string)reader["email"],
+                        Phone = (string)reader["phone"],
+                        DateOfBirth = (DateTime)reader["date_of_birth"],
+                        Salary = (int)reader["salary"],
+                        Efficiency = (double)reader["Efficiency"]
+
+                    };
+
+                    employees.Add(e);
+                }
+            }
+            return employees;
         }
         #endregion
 
