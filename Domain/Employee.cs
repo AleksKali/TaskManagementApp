@@ -14,6 +14,9 @@ namespace Domain
         public string Phone { get; set; }
         public DateTime DateOfBirth { get; set; }
         public int Salary { get; set; }
+        public int ResolvedTasks { get; set; }
+
+        public double Efficiency { get; set; }
 
         public override string ToString()
         {

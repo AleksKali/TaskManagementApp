@@ -14,6 +14,7 @@ namespace Domain
 
         public double Percentage { get; set; }
         public int NumOFEmployees { get; set; }
+        public int NumOfTasks { get; set; }
 
         public override string ToString()
         {
