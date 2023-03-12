@@ -11,9 +11,8 @@ namespace DatabaseBroker
     public class Broker
     {
 
-        #region basic
+        #region connection
         private SqlConnection connection;
-        private SqlTransaction transaction;
 
         public Broker()
         {
@@ -21,7 +20,7 @@ namespace DatabaseBroker
 
         }
 
-     
+
         public void OpenConnection()
         {
             connection.Open();
@@ -37,6 +36,178 @@ namespace DatabaseBroker
         #endregion
 
 
+        #region project
+       
+        public List<Project> GetPercentage()
+        {
+            List<Project> projects = new List<Project>();
+            SqlCommand command = new SqlCommand("dbo.GetProjectPercentage", connection);
+                
+            command.CommandType = CommandType.StoredProcedure;
+
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Project p = new Project
+                    {
+                        ProjectId = (int)reader["id"],
+                        Title = (string)reader["title"],
+                        Description = (string)reader["description"],
+                        Percentage = (double)reader["Percentage"]
+
+                    };
+
+                    projects.Add(p);
+                }
+            }
+            return projects;
+        }
+
+        public List<Project> GetSmallProjects()
+        {
+            List<Project> projects = new List<Project>();
+
+            SqlCommand command = new SqlCommand("", connection);
+            command.CommandText = $"SELECT COUNT(e.id) AS NumOfEmployees, p.* FROM Project p JOIN Task t ON t.project_id = p.id JOIN Employee e ON e.id = t.assignee GROUP BY p.id, p.title, p.description HAVING COUNT(t.id) <= 3";
+
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Project p = new Project
+                    {
+                        ProjectId = (int)reader["id"],
+                        Title = (string)reader["title"],
+                        Description = (string)reader["description"],
+                        NumOFEmployees = (int)reader["NumOfEmployees"]
+
+                    };
+
+                    projects.Add(p);
+                }
+            }
+            return projects;
+        }
+
+        public List<Project> GetAllProjects()
+        {
+            List<Project> projects = new List<Project>();
+
+            SqlCommand command = new SqlCommand("", connection);
+            command.CommandText = $"SELECT * from project";
+
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Project p = new Project
+                    {
+                        ProjectId = (int)reader["id"],
+                        Title = (string)reader["title"],
+                        Description = (string)reader["description"]
+                    };
+
+                    projects.Add(p);
+                }
+            }
+            return projects;
+        }
+
+        public List<Project> GetLargeProjects()
+        {
+            List<Project> projects = new List<Project>();
+
+            SqlCommand command = new SqlCommand("", connection);
+            command.CommandText = $"SELECT COUNT(e.id) AS NumOfEmployees, p.* FROM Project p JOIN Task t ON t.project_id = p.id JOIN Employee e ON e.id = t.assignee GROUP BY p.id, p.title, p.description HAVING COUNT(t.id) > 10";
+
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Project p = new Project
+                    {
+                        ProjectId = (int)reader["id"],
+                        Title = (string)reader["title"],
+                        Description = (string)reader["description"],
+                        NumOFEmployees = (int)reader["NumOfEmployees"]
+
+                    };
+
+                    projects.Add(p);
+                }
+            }
+            return projects;
+        }
+
+        public List<Project> GetMediumProjects()
+        {
+            List<Project> projects = new List<Project>();
+
+            SqlCommand command = new SqlCommand("", connection);
+            command.CommandText = $"SELECT COUNT(e.id) AS NumOfEmployees, p.* FROM Project p JOIN Task t ON t.project_id = p.id JOIN Employee e ON e.id = t.assignee GROUP BY p.id, p.title, p.description HAVING COUNT(t.id) BETWEEN 4 AND 10";
+
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Project p = new Project
+                    {
+                        ProjectId = (int)reader["id"],
+                        Title = (string)reader["title"],
+                        Description = (string)reader["description"],
+                        NumOFEmployees = (int)reader["NumOfEmployees"]
+
+                    };
+
+                    projects.Add(p);
+                }
+            }
+            return projects;
+        }
+        #endregion
+
+        #region task
+
+
+        public void DeleteTask(Task obj)
+        {
+            SqlCommand command = new SqlCommand("", connection);
+            command.CommandText = $"delete from task WHERE id={obj.TaskId}";
+            command.ExecuteNonQuery();
+        }
+        //public void UpdateTask(Task obj) //ne radi
+        //{
+
+        //    SqlCommand command = new SqlCommand("", connection);
+        //    command.CommandText = $"update task set title = @Title, description = @Description, assignee = @Assignee, due_date = @DueDate, status = @Status, updated_at = @UpdatedAt WHERE id= {obj.TaskId}";
+
+
+        //    command.Parameters.AddWithValue("Title", obj.Title);
+        //    command.Parameters.AddWithValue("Description", obj.Description);
+        //    command.Parameters.AddWithValue("Assignee", obj.Assignee.EmployeeId);
+        //    command.Parameters.AddWithValue("DueDate", obj.DueDate);
+        //    command.Parameters.AddWithValue("Status", obj.Status);
+        //    command.Parameters.AddWithValue("UpdatedAt", DateTime.Now);
+
+
+        //    command.ExecuteNonQuery();
+        //}
+        public void UpdateTask(Task obj)
+        {
+            SqlCommand command = new SqlCommand("dbo.UpdateTask", connection);
+
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@TaskId", obj.TaskId);
+            command.Parameters.AddWithValue("@Title", obj.Title);
+            command.Parameters.AddWithValue("@Description", obj.Description);
+            command.Parameters.AddWithValue("@Assignee", obj.Assignee.EmployeeId);
+            command.Parameters.AddWithValue("@DueDate", obj.DueDate);
+            command.Parameters.AddWithValue("@Status", (int)obj.Status);
+
+            command.ExecuteNonQuery();
+
+        }
         public List<Task> GetAllTasks()
         {
             List<Task> tasks = new List<Task>();
@@ -74,69 +245,6 @@ namespace DatabaseBroker
             return tasks;
         }
 
-
-        public List<Project> GetAllProjects()
-        {
-            List<Project> projects = new List<Project>();
-
-            SqlCommand command = new SqlCommand("", connection);
-            command.CommandText = $"SELECT * from project";
-
-            using (SqlDataReader reader = command.ExecuteReader())
-            {
-                while (reader.Read())
-                {
-                    Project p = new Project
-                    {
-                        ProjectId = (int)reader["id"],
-                        Title = (string)reader["title"],
-                        Description = (string)reader["description"]
-
-                    };
-
-                    projects.Add(p);
-                }
-            }
-            return projects;
-        }
-
-        public void UpdateTask(Task obj)
-        {
-            SqlCommand command = new SqlCommand("", connection);
-            command.CommandText = $"update task set title = @Title, description = @Description, assignee = @Assignee, due_date = @DueDate, status = @Status, updated_at = @UpdatedAt WHERE id= @TaskId";
-            command.Parameters.AddWithValue("TaskId", obj.TaskId);
-            command.Parameters.AddWithValue("Title", obj.Title);
-            command.Parameters.AddWithValue("Description", obj.Description);
-            command.Parameters.AddWithValue("Assignee", obj.Assignee.EmployeeId);
-            command.Parameters.AddWithValue("Salary", obj.DueDate);
-
-            command.ExecuteNonQuery();
-        }
-
-        public int CheckEmployeeProjectConnection(Task obj)
-        {
-            bool go = true;
-
-            int broj = 0;
-
-            SqlCommand command = new SqlCommand("", connection);
-            command.CommandText = $"select count(assignee) from task where assignee = {obj.Assignee.EmployeeId} AND project_id={obj.Project.ProjectId}";
-
-            broj= (int)command.ExecuteScalar();
-
-            return broj;
-        }
-        //ako ima jos onda nista, ako nema onda delete
-
-        public void UpdateEmployeeProject(Task obj)
-        {
-            SqlCommand command = new SqlCommand("", connection);
-            command.CommandText = $"update employee_project set @EmployeeId, @ProjectId";
-            command.Parameters.AddWithValue("EmployeeId", obj.Assignee.EmployeeId);
-            command.Parameters.AddWithValue("ProjectId", obj.Project.ProjectId);
-
-            command.ExecuteNonQuery();
-        }
 
         public List<Task> SearchTasks(string criteria)
         {
@@ -191,15 +299,9 @@ namespace DatabaseBroker
             command.ExecuteNonQuery();
         }
 
-        public void SaveEmployeeProject(Task obj)
-        {
-            SqlCommand command = new SqlCommand("", connection);
-            command.CommandText = $"insert into employee_project  values (@EmployeeId, @ProjectId)";
-            command.Parameters.AddWithValue("EmployeeId", obj.Assignee.EmployeeId);
-            command.Parameters.AddWithValue("ProjectId", obj.Project.ProjectId);
+        #endregion
 
-            command.ExecuteNonQuery();
-        }
+        #region employee
         public void SaveEmployee(Employee obj)
         {
             SqlCommand command = new SqlCommand();
@@ -290,6 +392,39 @@ namespace DatabaseBroker
             command.CommandText = $"delete from Employee WHERE id={obj.EmployeeId}";
             command.ExecuteNonQuery();
         }
+
+       
+
+        public List<Employee> GetTopEmployees()
+        {
+            List<Employee> employees = new List<Employee>();
+
+            SqlCommand command = new SqlCommand("", connection);
+            command.CommandText = $"select TOP (5) COUNT(t.id) AS FinishedTasks, e.* FROM task t INNER JOIN Employee e ON e.id = t.assignee WHERE t.status = 2 and t.resolved >= DATEADD(month, -1, GETDATE()) GROUP by e.id, e.full_name, e.email, e.phone, e.date_of_birth, e.salary ORDER BY count(t.id) DESC";
+
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Employee e = new Employee
+                    {
+                        EmployeeId = (int)reader["id"],
+                        FullName = (string)reader["full_name"],
+                        Email = (string)reader["email"],
+                        Phone = (string)reader["phone"],
+                        DateOfBirth = (DateTime)reader["date_of_birth"],
+                        Salary = (int)reader["salary"]
+
+                    };
+
+                    employees.Add(e);
+                }
+            }
+            return employees;
+
+
+        }
+        #endregion
 
     }
 }
