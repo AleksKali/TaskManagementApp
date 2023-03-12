@@ -89,5 +89,18 @@ namespace Repository
                 broker.CloseConnection();
             }
         }
+
+        public List<Employee> GetEmployeeKPI()
+        {
+            try
+            {
+                broker.OpenConnection();
+                return broker.GetEmployeeKPI();
+            }
+            finally
+            {
+                broker.CloseConnection();
+            }
+        }
     }
 }
