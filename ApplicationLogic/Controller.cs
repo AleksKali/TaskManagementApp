@@ -20,7 +20,8 @@ namespace ApplicationLogic
     {
         #region singleton
         private static Controller instance;
-        
+
+       
         private Controller()
         {
         }
@@ -117,6 +118,7 @@ namespace ApplicationLogic
                 dgvProjectStatus.DataSource = projectRepository.GetProjectStatus();
                 dgvProjectStatus.Columns[0].Visible = false;
                 dgvProjectStatus.Columns[4].Visible = false;
+                dgvProjectStatus.Columns[5].Visible = false;
                 dgvProjectStatus.ReadOnly = true;
             }
             catch (Exception ex)
@@ -147,7 +149,7 @@ namespace ApplicationLogic
             
         }
 
-        public void DeleteTask(DataGridView dgvSearchTasks) //pls choose a row
+        public void DeleteTask(DataGridView dgvSearchTasks) 
         {
 
             if (dgvSearchTasks.SelectedRows.Count == 0)
@@ -300,7 +302,7 @@ namespace ApplicationLogic
             return true;
         }
 
-        public bool ValidateTaskData(TextBox tbTitle, RichTextBox rtbDescription)
+        public bool ValidateTaskData(TextBox tbTitle, RichTextBox rtbDescription, DateTimePicker dtpDueDate)
         {
             bool valid = true;
 
@@ -323,6 +325,12 @@ namespace ApplicationLogic
             {
                 rtbDescription.BackColor = Color.White;
             }
+            if (dtpDueDate.Value <= DateTime.Now)
+            {
+                MessageBox.Show("Dute date has to be at least one day from today.");
+                valid = false;
+            }
+            
 
             return valid;
         }
@@ -342,6 +350,7 @@ namespace ApplicationLogic
             {
                 dgvTopEmployees.DataSource = employeeRepository.GetTopEmployees();
                 dgvTopEmployees.Columns[0].Visible = false;
+                dgvTopEmployees.Columns[7].Visible = false;
             }
             catch (Exception ex)
             {
@@ -371,10 +380,11 @@ namespace ApplicationLogic
                 MessageBox.Show("Employee successfully created!");
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                MessageBox.Show("Failed to save data.");
+                MessageBox.Show("Failed to save data." + ex.Message);
+                Debug.WriteLine(">>>>>>>> " + ex.Message);
             }
             
 
@@ -415,6 +425,8 @@ namespace ApplicationLogic
                 dgv.DataSource = employeeRepository.GetAll();
                 dgv.ReadOnly = true;
                 dgv.Columns[0].Visible = false;
+                dgv.Columns[6].Visible = false;
+                dgv.Columns[7].Visible = false;
             }
             catch (Exception ex)
             {
@@ -487,7 +499,7 @@ namespace ApplicationLogic
             return valid;
         }
 
-
+        #endregion
         public void RefreshEFields(TextBox tbFullName, TextBox tbEmail, TextBox tbPhone, TextBox tbSalary)
         {
             tbFullName.Text = null;
@@ -497,7 +509,7 @@ namespace ApplicationLogic
         }
 
 
-        #endregion
+       
         public void SearchEmployees(DataGridView dgv, string text)
         {
             try
@@ -561,6 +573,24 @@ namespace ApplicationLogic
                 Debug.WriteLine(">>>>>> " + ex.Message);
             }
         }
+
+        public void GetEmployeeKPI(DataGridView dgvEmployeeKPI)
+        {
+            try
+            {
+                dgvEmployeeKPI.DataSource = employeeRepository.GetEmployeeKPI();
+                dgvEmployeeKPI.Columns[0].Visible = false;
+                dgvEmployeeKPI.Columns[6].Visible = false;
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Failed to display employee efficiency. " + ex.Message);
+                Debug.WriteLine(">>>>>>>> " + ex.Message);
+            }
+        }
+
+
         #endregion
     }
 }
