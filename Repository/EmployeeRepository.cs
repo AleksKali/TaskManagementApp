@@ -51,6 +51,19 @@ namespace Repository
             }
         }
 
+        public List<Employee> GetTopEmployees()
+        {
+            try
+            {
+                broker.OpenConnection();
+                return broker.GetTopEmployees();
+            }
+            finally
+            {
+                broker.CloseConnection();
+            }
+        }
+
         public List<Employee> Search(string criteria)
         {
             try

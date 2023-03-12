@@ -14,7 +14,15 @@ namespace Repository
 
         public void Delete(Task obj)
         {
-            throw new NotImplementedException();
+            try
+            {
+                broker.OpenConnection();
+                broker.DeleteTask(obj);
+            }
+            finally
+            {
+                broker.CloseConnection();
+            }
         }
 
         public List<Task> GetAll()
@@ -37,16 +45,6 @@ namespace Repository
                 broker.OpenConnection();
                 broker.SaveTask(obj);
 
-                try
-                {
-                    broker.SaveEmployeeProject(obj);
-                }
-                catch (Exception ex)
-                {
-
-                    Debug.WriteLine(">>>>>>> Row already exists. " + ex.Message);
-                }
-                
             }
             finally
             {
@@ -72,21 +70,8 @@ namespace Repository
             try
             {
                 broker.OpenConnection();
-                
-                try
-                {
-                    
-                    int i =broker.CheckEmployeeProjectConnection(obj);
-                    if(i>)
-                    //broker.UpdateEmployeeProject(obj);
-                }
-                catch (Exception ex)
-                {
-
-                    Debug.WriteLine(">>>>>>> Row already exists. " + ex.Message);
-                }
-                broker.UpdateTask(obj); //provera da li postoji vise ovakvih, ako postoji sve kul, ako ne postoji brise se veza
-
+                broker.UpdateTask(obj); 
+               
             }
             finally
             {

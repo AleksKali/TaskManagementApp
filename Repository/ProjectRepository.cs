@@ -45,5 +45,57 @@ namespace Repository
         {
             throw new NotImplementedException();
         }
+
+        public List<Project> GetProjectStatus()
+        {
+            try
+            {
+                broker.OpenConnection();
+                return broker.GetPercentage();
+            }
+            finally
+            {
+                broker.CloseConnection();
+            };
+        }
+
+        public List<Project> GetSmallProjects()
+        {
+            try
+            {
+                broker.OpenConnection();
+                return broker.GetSmallProjects();
+            }
+            finally
+            {
+                broker.CloseConnection();
+            };
+        }
+
+        public List<Project> GetMediumProjects()
+        {
+            try
+            {
+                broker.OpenConnection();
+                return broker.GetMediumProjects();
+            }
+            finally
+            {
+                broker.CloseConnection();
+            };
+        }
+
+        public List<Project> GetLargeProjects()
+        {
+            try
+            {
+                broker.OpenConnection();
+                return broker.GetLargeProjects();
+            }
+            finally
+            {
+                broker.CloseConnection();
+            };
+        }
     }
 }
